@@ -1,0 +1,42 @@
+<!-- JS function making -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function add7(value){
+            value = value + 7;
+            alert(value);
+        }
+
+        function multiply(value){
+            alert(value);
+            value = value * value;
+            alert(value);
+        }
+
+        function capitalize(sentence){
+            let newSent = sentence.toUpperCase();
+            alert(newSent);
+        }
+
+        function lastLetter(sentence){
+            let newSent = sentence.slice(-1);  //Takes the str length and subs it
+            alert(newSent);
+        }
+
+        let sent = "abcd";
+        console.log(add7(2));
+        console.log(multiply(8));
+        console.log(capitalize(sent));
+        console.log(lastLetter(sent));
+
+    </script>
+</body>
+</html>
