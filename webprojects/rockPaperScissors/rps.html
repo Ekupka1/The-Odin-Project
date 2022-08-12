@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock, Paper, Scissors Game</title>
+  </head>
+
+  <body>
+    <section class="game">
+      <div class="title">Rock Paper Scissors</div>
+      <h1 class="gameText" id="resultText">Result: </h1>
+
+      <!-- <div class="logo">
+        <img src="rps.png" /> -->
+
+        <div class="options">
+          <button class="buttons">Rock</button>
+          <button class="buttons">Paper</button>
+          <button class="buttons">Scissors</button>
+        </div>
+      <!-- </div> -->
+
+        
+    </section>
+
+    <script>
+        const resultText = document.querySelector('#resultText');
+        
+          let machine;
+          let player;
+          let result;
+            
+
+         buttons.forEach(button => button.addEventListener("click", () => {
+            player = button.textContext;
+            machineChoice();
+            resultText.textContent = checkWinner();
+
+          }));
+
+          function machineChoice(){
+            const machineOptions = ["rock", "paper", "scissors"];
+            const machineChoice = machineOptions[Math.floor(Math.random() machineOptions.length())];
+          }
+
+          function checkWinner(){
+            if(player == machine){
+                return 'Tie'
+            }
+            else if(machine == 'rock'){
+                return(player == 'paper')? 'You win' : 'You lose'
+            }
+            else if(machine == 'paper'){
+                return(player == 'scissors')? 'You win' : 'You lose'
+            }
+            else if(machine == 'scissors'){
+                return(player == 'rock')? 'You win' : 'You lose'
+            }
+          }
+        
+      
+      </script>
+
+
+
+  </body>
+</html>
+
+
+<style>
+    /* Size of the picture */
+    .logo img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Style the button and place it in the middle of the container/image */
+    .logo .rock {
+      position: absolute;
+      top: 70%;
+      left: 18%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      background-color: #555;
+      color: white;
+      font-size: 16px;
+      padding: 12px 24px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .logo .paper {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      background-color: #555;
+      color: white;
+      font-size: 16px;
+      padding: 12px 24px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .logo .scissors {
+      position: absolute;
+      top: 70%;
+      left: 82%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      background-color: #555;
+      color: white;
+      font-size: 16px;
+      padding: 12px 24px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .logo .result{
+        position: center;
+    }
+  </style>
