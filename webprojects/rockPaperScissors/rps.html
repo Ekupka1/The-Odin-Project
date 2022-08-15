@@ -10,117 +10,68 @@
   <body>
     <section class="game">
       <div class="title">Rock Paper Scissors</div>
-      <h1 class="gameText" id="resultText">Result: </h1>
+      <h1 class="gameText" id="resultText">Result:</h1>
 
       <!-- <div class="logo">
         <img src="rps.png" /> -->
 
-        <div class="options">
-          <button class="buttons">Rock</button>
-          <button class="buttons">Paper</button>
-          <button class="buttons">Scissors</button>
-        </div>
-      <!-- </div> -->
+      <div class="options">
+        <button id="rock" onClick="this.id">Rock</button>
+        <button id="paper" onClick="myClick(this.id)">Paper</button>
+        <button id="scissors" onClick="myClick(this.id)">Scissors</button>
+      </div>
 
-        
+      <!-- </div> -->
     </section>
 
     <script>
-        const resultText = document.querySelector('#resultText');
+      const computerSelection = computerPlay();
+      // const mySelection = document.querySelector('this.id');
+      // const result = check();
+
+      function myClick(clicked_id) {
+        console.log(clicked_id);
+        return clicked_id;
         
-          let machine;
-          let player;
-          let result;
-            
+      }
 
-         buttons.forEach(button => button.addEventListener("click", () => {
-            player = button.textContext;
-            machineChoice();
-            resultText.textContent = checkWinner();
+      function computerPlay() {
+        const choices = ["rock", "paper", "scissors"];
+        return choices[Math.floor(Math.random() * Math.floor(choices.length))];
+        // console.log(choices);
+      }
 
-          }));
-
-          function machineChoice(){
-            const machineOptions = ["rock", "paper", "scissors"];
-            const machineChoice = machineOptions[Math.floor(Math.random() machineOptions.length())];
-          }
-
-          function checkWinner(){
-            if(player == machine){
-                return 'Tie'
-            }
-            else if(machine == 'rock'){
-                return(player == 'paper')? 'You win' : 'You lose'
-            }
-            else if(machine == 'paper'){
-                return(player == 'scissors')? 'You win' : 'You lose'
-            }
-            else if(machine == 'scissors'){
-                return(player == 'rock')? 'You win' : 'You lose'
-            }
-          }
-        
-      
-      </script>
-
-
-
+      function check(clicked_id, computerChoice) {
+        let result;
+        if (clicked_id == computerChoice) {
+          result = "Its  Tie!";
+        } else if (
+          (clicked_id == "scissors" && computerChoice == "rock") ||
+          (clicked_id == "rock" && computerChoice == "paper") ||
+          (clicked_id == "paper" && computerChoice == "scissors")
+        ) {
+          result = "Computer Won";
+        } else if (
+          (clicked_id == "scissors" && computerChoice == "paper") ||
+          (clicked_id == "rock" && computerChoice == "scissors") ||
+          (clicked_id == "paper" && computerChoice == "rock")
+        ) {
+          result = "You Won";
+        }
+        return result;
+      }
+      const mySelection = 'rock'
+      console.log("Player chooses: " + mySelection);
+      console.log("comp: " + computerSelection);
+      console.log(check(mySelection, computerSelection));
+    </script>
   </body>
 </html>
 
-
 <style>
-    /* Size of the picture */
-    .logo img {
-      width: 100%;
-      height: auto;
-    }
-
-    /* Style the button and place it in the middle of the container/image */
-    .logo .rock {
-      position: absolute;
-      top: 70%;
-      left: 18%;
-      transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      background-color: #555;
-      color: white;
-      font-size: 16px;
-      padding: 12px 24px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    .logo .paper {
-      position: absolute;
-      top: 70%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      background-color: #555;
-      color: white;
-      font-size: 16px;
-      padding: 12px 24px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    .logo .scissors {
-      position: absolute;
-      top: 70%;
-      left: 82%;
-      transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      background-color: #555;
-      color: white;
-      font-size: 16px;
-      padding: 12px 24px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .logo .result{
-        position: center;
-    }
-  </style>
+  /* Size of the picture */
+  .logo img {
+    width: 100%;
+    height: auto;
+  }
+</style>
