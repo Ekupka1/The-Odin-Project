@@ -10,13 +10,24 @@
   <body>
     <section class="game">
       <div class="title">Rock Paper Scissors</div>
-      <h1 class="gameText" id="resultText">Result:</h1>
+      <!-- <h1 class="gameText" id="resultText">Result:</h1> -->
 
       <!-- <div class="logo">
         <img src="rps.png" /> -->
 
+      <div class="score">
+        <div class="playerScore">
+          <h2>Player</h2>
+          <p class="p-count count">0</p>
+        </div>
+        <div class="computerScore">
+          <h2>Computer</h2>
+          <p class="c-count count">0</p>
+        </div>
+      </div>
+
       <div class="options">
-        <button id="rock" onClick="this.id">Rock</button>
+        <button id="rock" onClick="myClick(this.id)">Rock</button>
         <button id="paper" onClick="myClick(this.id)">Paper</button>
         <button id="scissors" onClick="myClick(this.id)">Scissors</button>
       </div>
@@ -25,24 +36,35 @@
     </section>
 
     <script>
-      const computerSelection = computerPlay();
-      // const mySelection = document.querySelector('this.id');
-      // const result = check();
+      
+      const game = () => {
+        let myScore = 0;
+        let computerScore = 0;
+        let moves = 0;
+        const computerSelection = computerPlay();
+        const mySelection = document.querySelector("this.id");
+        // const result = check();
 
-      function myClick(clicked_id) {
-        console.log(clicked_id);
-        return clicked_id;
-        
-      }
+        function myClick(clicked_id) {
+          console.log(clicked_id);
+          console.log("comp: " + computerSelection);
+          return clicked_id;
+        }
 
-      function computerPlay() {
-        const choices = ["rock", "paper", "scissors"];
-        return choices[Math.floor(Math.random() * Math.floor(choices.length))];
-        // console.log(choices);
-      }
-
+        // computer choice logic
+        function computerPlay() {
+          const choices = ["rock", "paper", "scissors"];
+          return choices[
+            Math.floor(Math.random() * Math.floor(choices.length))
+          ];
+          
+        }
+      
+      // game logic
       function check(clicked_id, computerChoice) {
         let result;
+        const playerScoreBoard = document.querySelector(".p-count");
+        const computerScoreBoard = document.querySelector(".c-count");
         if (clicked_id == computerChoice) {
           result = "Its  Tie!";
         } else if (
@@ -51,19 +73,30 @@
           (clicked_id == "paper" && computerChoice == "scissors")
         ) {
           result = "Computer Won";
+          computerScore++;
+          computerScoreBoard.textContent = computerScore;
         } else if (
           (clicked_id == "scissors" && computerChoice == "paper") ||
           (clicked_id == "rock" && computerChoice == "scissors") ||
           (clicked_id == "paper" && computerChoice == "rock")
         ) {
           result = "You Won";
+          myScore++;
+          playerScoreBoard.textContent = myScore;
         }
         return result;
+        document.getElementById('result').textContent = result;
       }
-      const mySelection = 'rock'
-      console.log("Player chooses: " + mySelection);
-      console.log("comp: " + computerSelection);
-      console.log(check(mySelection, computerSelection));
+
+      // function game( mySelection, computerSelection){
+      // const mySelection = "rock";
+        console.log("Player chooses: " + mySelection);
+      // console.log("comp: " + computerSelection);
+        console.log(check(mySelection, computerSelection));
+      
+    }
+      
+     
     </script>
   </body>
 </html>
