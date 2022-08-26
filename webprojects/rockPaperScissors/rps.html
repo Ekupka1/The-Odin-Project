@@ -37,17 +37,17 @@
 
     <script>
       
-      const game = () => {
-        let myScore = 0;
-        let computerScore = 0;
-        let moves = 0;
-        const computerSelection = computerPlay();
-        const mySelection = document.querySelector("this.id");
-        // const result = check();
+
+       
+        // const computerSelection = computerPlay();
+        // const mySelection = document.querySelector("this.id");
 
         function myClick(clicked_id) {
+          const computerSelection = computerPlay();
           console.log(clicked_id);
           console.log("comp: " + computerSelection);
+          console.log(check(mySelection, computerSelection));
+          console.log("--------------------")
           return clicked_id;
         }
 
@@ -63,6 +63,9 @@
       // game logic
       function check(clicked_id, computerChoice) {
         let result;
+        let myScore = 0;
+        let computerScore = 0;
+        let moves = 0;
         const playerScoreBoard = document.querySelector(".p-count");
         const computerScoreBoard = document.querySelector(".c-count");
         if (clicked_id == computerChoice) {
@@ -88,13 +91,13 @@
         document.getElementById('result').textContent = result;
       }
 
-      // function game( mySelection, computerSelection){
-      // const mySelection = "rock";
-        console.log("Player chooses: " + mySelection);
+       const mySelection = null;
+       const computerSelection = null;
+      //   console.log("Player chooses: " + mySelection);
       // console.log("comp: " + computerSelection);
         console.log(check(mySelection, computerSelection));
       
-    }
+    
       
      
     </script>
