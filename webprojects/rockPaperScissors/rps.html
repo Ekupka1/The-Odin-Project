@@ -8,106 +8,172 @@
   </head>
 
   <body>
-    <section class="game">
-      <div class="title">Rock Paper Scissors</div>
-      <!-- <h1 class="gameText" id="resultText">Result:</h1> -->
-
-      <!-- <div class="logo">
-        <img src="rps.png" /> -->
-
-      <div class="score">
-        <div class="playerScore">
-          <h2>Player</h2>
-          <p class="p-count count">0</p>
+        <div class="container">
+          <img src="rps.png" alt="ROCK PAPER SCISSORS"/>
+          <div class="logo">
+            <div class="score">
+              <div class="playerScore">
+                <h2>Player</h2>
+                <p class="p-count count">0</p>
+              </div>
+              <div class="computerScore">
+                <h2>Computer</h2>
+                <p class="c-count count">0</p>
+              </div>
+            </div>
+          <button class="btn" id="rock" onClick="myClick(this.id)">Rock</button>
+          <button class="btn2" id="scissors" onClick="myClick(this.id)">Scissors</button>
+          <button class="btn3" id="paper" onClick="myClick(this.id)">Paper</button>
         </div>
-        <div class="computerScore">
-          <h2>Computer</h2>
-          <p class="c-count count">0</p>
-        </div>
-      </div>
-
-      <div class="options">
-        <button id="rock" onClick="myClick(this.id)">Rock</button>
-        <button id="paper" onClick="myClick(this.id)">Paper</button>
-        <button id="scissors" onClick="myClick(this.id)">Scissors</button>
-      </div>
-
-      <!-- </div> -->
-    </section>
 
     <script>
-      
+      let result;
+      let myScore = 0;
+      let computerScore = 0;
 
-       
-        // const computerSelection = computerPlay();
-        // const mySelection = document.querySelector("this.id");
-
-        function myClick(clicked_id) {
-          const computerSelection = computerPlay();
-          console.log(clicked_id);
-          console.log("comp: " + computerSelection);
-          console.log(check(mySelection, computerSelection));
-          console.log("--------------------")
-          return clicked_id;
-        }
-
-        // computer choice logic
-        function computerPlay() {
-          const choices = ["rock", "paper", "scissors"];
-          return choices[
-            Math.floor(Math.random() * Math.floor(choices.length))
-          ];
-          
-        }
-      
-      // game logic
-      function check(clicked_id, computerChoice) {
-        let result;
-        let myScore = 0;
-        let computerScore = 0;
-        let moves = 0;
+       // checking choices logic
+       function check(mySelection, computerSelection) {
         const playerScoreBoard = document.querySelector(".p-count");
         const computerScoreBoard = document.querySelector(".c-count");
-        if (clicked_id == computerChoice) {
+        if (mySelection == computerSelection) {
           result = "Its  Tie!";
         } else if (
-          (clicked_id == "scissors" && computerChoice == "rock") ||
-          (clicked_id == "rock" && computerChoice == "paper") ||
-          (clicked_id == "paper" && computerChoice == "scissors")
+          (mySelection == "scissors" && computerSelection == "rock") ||
+          (mySelection == "rock" && computerSelection == "paper") ||
+          (mySelection == "paper" && computerSelection == "scissors")
         ) {
           result = "Computer Won";
           computerScore++;
           computerScoreBoard.textContent = computerScore;
         } else if (
-          (clicked_id == "scissors" && computerChoice == "paper") ||
-          (clicked_id == "rock" && computerChoice == "scissors") ||
-          (clicked_id == "paper" && computerChoice == "rock")
+          (mySelection == "scissors" && computerSelection == "paper") ||
+          (mySelection == "rock" && computerSelection == "scissors") ||
+          (mySelection == "paper" && computerSelection == "rock")
         ) {
           result = "You Won";
           myScore++;
           playerScoreBoard.textContent = myScore;
         }
         return result;
-        document.getElementById('result').textContent = result;
+        document.getElementById("result").textContent = result;
       }
 
-       const mySelection = null;
-       const computerSelection = null;
-      //   console.log("Player chooses: " + mySelection);
-      // console.log("comp: " + computerSelection);
-        console.log(check(mySelection, computerSelection));
-      
-    
-      
-     
+      // start of the game and getting user choice
+      function myClick(clicked_id) {
+        const computerSelection = computerPlay();
+        console.log("MyChoice: " + clicked_id);
+        console.log("ComputerChoice: " + computerSelection);
+        console.log(check(clicked_id, computerSelection));
+        console.log("--------------------");
+      }
+
+      // computer choice logic
+      function computerPlay() {
+        const choices = ["rock", "paper", "scissors"];
+        return choices[Math.floor(Math.random() * Math.floor(choices.length))];
+      }
     </script>
   </body>
 </html>
 
 <style>
-  /* Size of the picture */
-  .logo img {
-    width: 100%;
-    height: auto;
-  }
+ /* Container needed to position the button. Adjust the width as needed */
+.container {
+  position: relative;
+  width: 50%;
+}
+
+/* Make the image responsive */
+.container img {
+  width: auto;
+  height: auto;
+}
+
+.logo .computerScore{
+  position: absolute;
+  top: 10%;
+  left: 100%;
+
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  color: black;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.logo .playerScore{
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  
+  color: black;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.container .btn{
+  position: absolute;
+  top: 84%;
+  left: 18%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 44px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.container .btn:hover {
+  background-color: black;
+}
+
+.container .btn2{
+  position: absolute;
+  top: 84%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 44px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.container .btn2:hover {
+  background-color: black;
+}
+
+.container .btn3{
+  position: absolute;
+  top: 84%;
+  left: 82%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 44px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.container .btn3:hover {
+  background-color: black;
+}
 </style>
